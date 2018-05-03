@@ -44,7 +44,7 @@ def analyze_data(my_csv_path):
                 my_rolling_decrease_date = row[0]
 
         my_average = (my_sum/my_counter)
-        #my_average = float(format(my_average, '.2f'))
+        my_average = float(format(my_average, '.2f'))
 
     financial_analysis = ({
         "Total Months": my_counter,
@@ -91,12 +91,10 @@ def print_results(financial_analysis):
 
 def update_txt_file(financial_analysis):
     temp = []
-    temp.append("##########################")
-    print("did it run??",financial_analysis)
+    temp.append("Financial Results: \n")
 
     for k,v in financial_analysis.items():
         temp.append(k+":"+ str(v) +"\n")
-        #print(k, " :", v)
 
     with open(output_path, "wt",newline="") as outputfile:
         outputfile.writelines(temp)
