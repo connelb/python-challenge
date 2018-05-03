@@ -73,7 +73,7 @@ def print_results(financial_analysis):
 
 
 
-def update_csv_file(financial_analysis):
+""" def update_csv_file(financial_analysis):
     with open(output_path, "w", newline="") as outputfile:
         fieldnames = [
             "Total Months",
@@ -86,18 +86,20 @@ def update_csv_file(financial_analysis):
         ]
         writer = csv.DictWriter(outputfile, fieldnames)
         writer.writeheader()
-        writer.writerows(financial_analysis)
+        writer.writerows(financial_analysis) """
 
 
 def update_txt_file(financial_analysis):
     temp = []
-    for index,datum in enumerate(financial_analysis):
-        temp.append(datum[index])
-        print(temp)
+    temp.append("##########################")
+    print("did it run??",financial_analysis)
 
+    for k,v in financial_analysis.items():
+        temp.append(k+":"+ str(v) +"\n")
+        #print(k, " :", v)
 
-    #with open(output_path, "wt") as outputfile:
-        #outputfile.writelines(financial_analysis)
+    with open(output_path, "wt",newline="") as outputfile:
+        outputfile.writelines(temp)
 
 
 def main():
