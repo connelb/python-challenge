@@ -1,9 +1,3 @@
-"""•The total number of months included in the dataset
-•The total amount of revenue gained over the entire period
-•The average change in revenue between months over the entire period
-•The greatest increase in revenue (date and amount) over the entire period
-•The greatest decrease in revenue (date and amount) over the entire period"""
-
 import os
 import csv
 
@@ -33,7 +27,7 @@ def analyze_data(my_csv_path):
         # Loop through rows
         for row in csv_reader:
             my_counter += 1
-            my_sum = float(row[1]) + my_average
+            my_sum = my_sum + float(row[1])
 
             if float(row[1]) > my_rolling_increase:
                 my_rolling_increase = float(row[1])
@@ -64,29 +58,9 @@ def print_results(financial_analysis):
     print("----------------------------")
     print(f"Total Months:{float(financial_analysis['Total Months'])}")
     print(f"Total Revenue: ${financial_analysis['Total Revenue']}")
-    print(
-        f"Average Revenue Change: ${financial_analysis['Average Revenue Change']}")
-    print(
-        f"Greatest Increase in Revenue: {financial_analysis['Greatest Increase in Revenue date']} (${financial_analysis['Greatest Increase in Revenue']})")
-    print(
-        f"Greatest Decrease in Revenue:{financial_analysis['Greatest Decrease in Revenue date']} (${financial_analysis['Greatest Decrease in Revenue']})")
-
-
-
-""" def update_csv_file(financial_analysis):
-    with open(output_path, "w", newline="") as outputfile:
-        fieldnames = [
-            "Total Months",
-            "Total Revenue",
-            "Average Revenue Change",
-            "Greatest Increase in Revenue",
-            "Greatest Increase in Revenue date",
-            "Greatest Decrease in Revenue",
-            "Greatest Dncrease in Revenue date",
-        ]
-        writer = csv.DictWriter(outputfile, fieldnames)
-        writer.writeheader()
-        writer.writerows(financial_analysis) """
+    print(f"Average Revenue Change: ${financial_analysis['Average Revenue Change']}")
+    print(f"Greatest Increase in Revenue: {financial_analysis['Greatest Increase in Revenue date']} (${financial_analysis['Greatest Increase in Revenue']})")
+    print(f"Greatest Decrease in Revenue:{financial_analysis['Greatest Decrease in Revenue date']} (${financial_analysis['Greatest Decrease in Revenue']})")
 
 
 def update_txt_file(financial_analysis):
@@ -102,7 +76,7 @@ def update_txt_file(financial_analysis):
 
 def main():
     """main function."""
-    financial_analysis = analyze_data(my_csv_path_1)
+    financial_analysis = analyze_data(my_csv_path_2)
     print_results(financial_analysis)
     update_txt_file(financial_analysis)
 
