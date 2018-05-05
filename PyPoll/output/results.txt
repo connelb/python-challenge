@@ -1,0 +1,7 @@
+Poll Results: 
+Vestal:{'Voter ID': '1165505', 'County': 'Harsaw', 'Candidate': 'Vestal'}
+Torres:{'Voter ID': '1320393', 'County': 'Harsaw', 'Candidate': 'Torres'}
+Seth:{'Voter ID': '1587154', 'County': 'Arrent', 'Candidate': 'Seth'}
+Cordin:{'Voter ID': '1243711', 'County': 'Porpus', 'Candidate': 'Cordin'}
+total:803000
+candidates:['Vestal', 'Torres', 'Seth', 'Cordin']

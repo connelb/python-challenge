@@ -14,42 +14,41 @@ def analyze_data(my_csv_path):
         csv_reader = csv.reader(csvfile, delimiter=",")
         candidates = set()
         total = 0
-        my_result = {}
+        poll_results = {}
         next(csv_reader, None)
 
         for row in csv_reader:
             # Voter ID,County,Candidate
             #print([row[2] for row in csv_reader])
             total = total + 1
-            my_result[row[2]] = (
+            poll_results[row[2]] = (
                 {"Voter ID": row[0], "County": row[1], "Candidate": row[2]})
 
-        candidates = [v["Candidate"] for k, v in my_result.items()]
-
-        for candidate in candidates:
-            for k, v in my_result.items():
-                temp = 0 
-                if (k == candidate):
-                    temp =+
-                 temp1 = ({count: temp}) 
-            
-               
-                    print(f"{candidate}: {}")
-                    Rogers: 36.0% (223236)
+        candidates = [v["Candidate"] for k, v in poll_results.items()]
+        poll_results["total"] = total
+        poll_results["candidates"] = candidates
+        #for candidate in candidates:
+            #poll_results[candidate] = count votes per candidate then dive by total and get %
+    return poll_results
 
 
-def print_results(financial_analysis):
+def print_results(poll_results):
     print("Election Results")
     print("----------------------------")
-    print("Total Votes:")
+    print("Total Votes:"+str(poll_results["total"]))
     print("----------------------------")
+    print(poll_results["candidates"][0]+': '+str(len(poll_results)))
+    print(poll_results["candidates"][1]+': '+str(len(poll_results)))
+    print(poll_results["candidates"][2]+': '+str(len(poll_results)))
+    print(poll_results["candidates"][3]+': '+str(len(poll_results)))
+    print(len(poll_results[poll_results["candidates"][0]]))
 
 
-def update_txt_file(financial_analysis):
+def update_txt_file(poll_results):
     temp = []
-    temp.append("Financial Results: \n")
+    temp.append("Poll Results: \n")
 
-    for k, v in financial_analysis.items():
+    for k, v in poll_results.items():
         temp.append(k+":" + str(v) + "\n")
 
     with open(output_path, "wt", newline="") as outputfile:
@@ -58,9 +57,9 @@ def update_txt_file(financial_analysis):
 
 def main():
     """main function."""
-    analyze_data(my_csv_path_1)
-    # print_results(financial_analysis)
-    # update_txt_file(financial_analysis)
+    poll_results_data = analyze_data(my_csv_path_1)
+    print_results(poll_results_data)
+    update_txt_file(poll_results_data)
 
 
 if __name__ == "__main__":
