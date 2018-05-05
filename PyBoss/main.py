@@ -109,7 +109,7 @@ us_state_abbrev = {
 
 def main():
     """main function."""
-    new_employees_data = remap_data(my_csv_path_1)
+    new_employees_data = remap_data(my_csv_path_2)
     update_csv_file(new_employees_data)
 
 
